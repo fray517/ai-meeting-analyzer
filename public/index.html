@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Расшифровка и конспект видеовстреч из Яндекс Телемоста и Zoom.">
+  <title>AI-анализатор видеовстреч</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="eyebrow"><span class="dot"></span> ЯНДЕКС ТЕЛЕМОСТ / ZOOM</span>
+      <h1>AI-анализатор<br>видеовстреч</h1>
+      <p>Загрузите запись и получите расшифровку речи, решения, задачи и открытые вопросы.</p>
+    </header>
+
+    <h2 class="section-title">Анализ встреч</h2>
+    <form id="cloud-form" class="cloud">
+      <label for="cloud-link">Ссылка на видеозапись</label>
+      <div class="cloud-controls">
+        <input id="cloud-link" type="url" placeholder="https://disk.yandex.ru/i/…" required maxlength="2048" aria-describedby="cloud-help">
+        <button id="cloud-submit" type="submit" disabled>Добавить из облака</button>
+      </div>
+      <small id="cloud-help">Публичная ссылка Яндекс Диска на файл MP4 или WebM с разрешением на скачивание.</small>
+    </form>
+    <section class="upload" id="drop" aria-labelledby="upload-title">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M12 16V4m-5 5 5-5 5 5M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/>
+      </svg>
+      <h2 id="upload-title">Загрузите запись встречи</h2>
+      <p>Перетащите файл сюда или выберите его на компьютере.</p>
+      <input id="file" type="file" accept=".mp4,.webm,video/mp4,video/webm" hidden>
+      <button id="choose" type="button" disabled>Выбрать видео</button>
+      <small>MP4 или WebM · до 5 минут и 250 МБ</small>
+    </section>
+    <p class="privacy">Для распознавания аудио, а для конспекта текст отправляются в OpenAI. Используйте записи с согласия участников.</p>
+    <p id="status" role="status" hidden></p>
+    <button id="open-existing" type="button" hidden>Открыть готовый результат</button>
+
+    <section class="history" aria-labelledby="history-title">
+      <h2 id="history-title">История встреч</h2>
+      <p id="empty">Загружаем историю…</p>
+      <div id="meetings"></div>
+    </section>
+  </main>
+</body>
+</html>
